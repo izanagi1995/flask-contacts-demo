@@ -20,13 +20,13 @@ def after_request(response):
 db = DB()
 view = PhoneBookAPI.as_view("phone_book_api", db)
 app.add_url_rule(
-    "/entries/", view_func=view, methods=["GET", ]
+    "/api/entries/", view_func=view, methods=["GET", ]
 )
 app.add_url_rule(
-    "/entries/", view_func=view, methods=["POST", ],
+    "/api/entries/", view_func=view, methods=["POST", ],
 )
 app.add_url_rule(
-    "/entries/<int:id>", view_func=view, methods=["PUT", "DELETE"]
+    "/api/entries/<int:id>", view_func=view, methods=["PUT", "DELETE"]
 )
 
 
@@ -38,4 +38,4 @@ atexit.register(on_exit)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
